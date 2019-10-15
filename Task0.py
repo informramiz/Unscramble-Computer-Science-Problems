@@ -20,4 +20,4 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 print("First recod of texts, %s texts %s at time %s" % (texts[0][0], texts[0][1], texts[0][2]))
-print("First recod of calls, %s calls %s at time %s, lasting %s seconds" % (calls[0][0], calls[0][1], calls[0][2], calls[0][3]))
+print("Last recod of calls, %s calls %s at time %s, lasting %s seconds" % (calls[-1][0], calls[-1][1], calls[-1][2], calls[-1][3]))
