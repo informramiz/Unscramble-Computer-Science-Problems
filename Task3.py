@@ -3,6 +3,7 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+from utils import *
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -43,3 +44,28 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+
+"""
+-------------------Part A---------------------
+Find all of the area codes and mobile prefixes called
+by people in Bangalore.
+Print the answer as part of a message:
+"The numbers called by people in Bangalore have codes:"
+ <list of codes>
+The list of codes should be print out one per line in lexicographic order with no duplicates.
+"""
+
+def find_codes_called_from_bangalore(calls):
+    bangalore_area_code = "(080)"
+    area_codes = set()
+    for caller, receiver, _, _ in calls:
+        if caller.startswith(bangalore_area_code):
+            area_codes.add(extract_area_code(receiver))
+
+    return sorted(area_codes)
+
+area_codes = find_codes_called_from_bangalore(calls)
+print("The numbers called by people in Bangalore have codes:\n")
+for code in area_codes:
+    print(code)
