@@ -60,3 +60,17 @@ def extract_mobile_code(number):
 def test_extract_mobile_code():
     assert(extract_mobile_code("93412 66159") == "9341")
 test_extract_mobile_code()
+
+"""
+A helper function to extract mobile code/prefix of a fixed line number
+Note: This function expects that the given number is a valid fixed line number
+"""
+def extract_fixed_line_code(number):
+    #Fixed lines start with an area code enclosed in brackets. The area
+    #codes vary in length but always begin with 0.
+    end_index = number.find(")")
+    return number[1:end_index]
+
+def test_extract_fixed_line_code():
+    assert(extract_fixed_line_code("(022)40840621") == "022")
+test_extract_fixed_line_code()
