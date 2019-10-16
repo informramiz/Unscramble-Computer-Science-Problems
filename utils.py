@@ -7,7 +7,7 @@ def is_mobile_number(number):
     of the number to help readability. The prefix of a mobile number
     is its first four digits, and they always start with 7, 8 or 9.
     """
-    return number[0] in ['7', '8', '9'] and number.find(" ") != -1
+    return number[0] in ['7', '8', '9']
 
 #do a quick test to verify above method
 def test_is_mobile_number():
