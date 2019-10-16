@@ -69,10 +69,10 @@ def extract_fixed_line_code(number):
     #Fixed lines start with an area code enclosed in brackets. The area
     #codes vary in length but always begin with 0.
     end_index = number.find(")")
-    return number[1:end_index]
+    return number[0:end_index+1]
 
 def test_extract_fixed_line_code():
-    assert(extract_fixed_line_code("(022)40840621") == "022")
+    assert(extract_fixed_line_code("(022)40840621") == "(022)")
 test_extract_fixed_line_code()
 
 """
@@ -104,7 +104,7 @@ def extract_area_code(number):
     return None
 
 def test_extract_area_code():
-    assert(extract_area_code("(022)40840621") == "022")
+    assert(extract_area_code("(022)40840621") == "(022)")
     assert(extract_area_code("1402316533") == "140")
     assert(extract_area_code("93412 66159") == "9341")
 test_extract_area_code()
