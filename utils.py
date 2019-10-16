@@ -74,3 +74,37 @@ def extract_fixed_line_code(number):
 def test_extract_fixed_line_code():
     assert(extract_fixed_line_code("(022)40840621") == "022")
 test_extract_fixed_line_code()
+
+"""
+A helper function to extract mobile code/prefix of a telemarketer number
+Note: This function expects that the given number is a valid telemarketer number number
+"""
+def extract_telemarketer_code(number):
+    """
+    Telemarketers' numbers have no parentheses or space, but they start
+    with the area code 140.
+    """
+    return "140"
+
+def test_extract_telemarketer_code():
+    assert(extract_telemarketer_code("1402316533") == "140")
+test_extract_telemarketer_code()
+
+"""
+A helper function to extract area code from number
+"""
+def extract_area_code(number):
+    if is_mobile_number(number):
+        return extract_mobile_code(number)
+    elif is_fixed_line_number(number):
+        return extract_fixed_line_code(number)
+    elif is_telemarketer_number(number):
+        return extract_telemarketer_code(number)
+
+    return None
+
+def test_extract_area_code():
+    assert(extract_area_code("(022)40840621") == "022")
+    assert(extract_area_code("1402316533") == "140")
+    assert(extract_area_code("93412 66159") == "9341")
+test_extract_area_code()
