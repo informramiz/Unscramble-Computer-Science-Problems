@@ -58,14 +58,30 @@ The list of codes should be print out one per line in lexicographic order with n
 
 def find_codes_called_from_bangalore(calls):
     bangalore_area_code = "(080)"
-    area_codes = set()
+    area_codes = []
     for caller, receiver, _, _ in calls:
         if caller.startswith(bangalore_area_code):
-            area_codes.add(extract_area_code(receiver))
+            area_codes.append(extract_area_code(receiver))
 
-    return sorted(area_codes)
+    return area_codes
 
-area_codes = find_codes_called_from_bangalore(calls)
-print("The numbers called by people in Bangalore have codes:\n")
-for code in area_codes:
+all_called_area_codes = find_codes_called_from_bangalore(calls)
+unique_called_area_codes = sorted(set(all_called_area_codes))
+print("The numbers called by people in Bangalore have codes:")
+for code in unique_called_area_codes:
     print(code)
+
+"""
+Part B: What percentage of calls from fixed lines in Bangalore are made
+to fixed lines also in Bangalore? In other words, of all the calls made
+from a number starting with "(080)", what percentage of these calls
+were made to a number also starting with "(080)"?
+
+Print the answer as a part of a message::
+"<percentage> percent of calls from fixed lines in Bangalore are calls
+to other fixed lines in Bangalore."
+The percentage should have 2 decimal digits
+"""
+bangalore_only_codes = [n for n in all_called_area_codes if n == "(080)"]
+percentage_of_bangalore_codes = (len(bangalore_only_codes) / float(len(all_called_area_codes))) * 100
+print("%.2f percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore." % percentage_of_bangalore_codes)
