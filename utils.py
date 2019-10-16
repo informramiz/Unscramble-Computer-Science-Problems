@@ -48,3 +48,15 @@ def test_is_telemarketer_number():
     assert(is_telemarketer_number("1402316533") == True)
     assert(is_telemarketer_number("(022)40840621") == False)
 test_is_telemarketer_number()
+
+"""
+A helper function to extract mobile code/prefix of a mobile number
+Note: This function expects that the given number is a valid mobile number
+"""
+def extract_mobile_code(number):
+    #The prefix of a mobile number is its first four digits
+    return number[0:4]
+
+def test_extract_mobile_code():
+    assert(extract_mobile_code("93412 66159") == "9341")
+test_extract_mobile_code()
