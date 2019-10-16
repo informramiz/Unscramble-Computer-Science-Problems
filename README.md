@@ -24,15 +24,15 @@ In this task we only access first and last element inside an array and because a
 2. Second we go through all possible numbers (which can be at most n, in case all numbers were unique) and keep track of only max duration number. This costs `O(n)`
 3. So the total cost is `O(n)`
 
-### Task 3: O(n)
+### Task 3: O(nlgn)
 
 1. Go through all call records and find the ones that were called from banglore. This will cost `O(n)` in worst case as all functions being called inside this loop will not cost more than 10 operations (because area codes are always lesser than 10) which is `O(1)`
 2. Remove duplicates and sort the unique codes, this in total costs `O(nlgn)` 
 3. Go through all codes that were called from Bangalore and filter the ones are from Banglore. This costs `O(n)` in worst case
 4. Print all codes, `O(n)`
-4. Total is `O(n) + O(nlgn) = O(nlgn)`
+4. Total is `O(n) + O(nlgn) + O(n) = O(nlgn)`
 
-### Task 4: O(n)
+### Task 4: O(nlgn)
 
 1. Filter all the call receivers by going through all call records and remove duplicates, total worst case `O(n)`.
 2. Find the numbers that sent texts by going through all the `texts` records, total worst case `O(n)`
